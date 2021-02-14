@@ -1,0 +1,48 @@
+DESCRIPCIÓN DEL PROBLEMA
+
+La empresa de seguros TK-U tiene el inconveniente de que sus cotizaciones lo
+realizan de manera manual, esto provoca perder mucho tiempo para realizar
+los cálculos respectivos. Añadido a esto, se genera atraso en la entrega de 
+las cotizaciones hasta llegar al punto de perder gran cantidad de clientes.
+Los casos van variando para la cotización, según las condiciones dadas, los 
+cuales se detallan a continuación:
+
+Dentro de los requerimientos solicitados por la empresa son:
+a. Que el asegurado sea mayor de edad.
+b. Existe un plan base sobre el cual se aplican los recargos extras;
+   pero existen ciertas condiciones sobre el asegurado:
+	1.La edad del asegurado.
+	2.Que el asegurado sea casado o no y la edad del cónyuge.
+	3.La cantidad de hijos del asegurado.
+c. Para los numerales 1 y 2 los recargos están basados en las edades:
+	-De 18 a 24 años el recargo es del 10% del precio base.
+	-De 25 a 49 años el recargo es del 20% del precio base.
+	-De 50 años en adelante el recargo es del 30% del precio base.
+	
+	Además, el recargo se aplica individualmente para el asegurado y el cónyuge.
+
+d. Para el numeral 3 se aplica un recargo del 20% por cada hijo que se desea asegurar.
+e. El recargo obligatorio es la edad del asegurado, pero puede darse el caso
+   de que no esté casado y no tener hijos; puede estar casado sin tener hijos;
+   puede tener hijos sin estar casado.
+f. Los recargos calculados son de manera acumulativos.
+
+Por otro lado, el procedimiento o funcionalidad del programa es:
+	-Se solicita el nombre del asegurado (al inicio del programa)
+	-Se solicita su edad.
+	-Se solicita si está casado:
+		-Si está casado, se le pregunta la edad de su pareja.
+		-Se solicita si tiene hijos.
+		-Si tiene hijos, se solicita la cantidad de hijos.
+
+Al finalizar la solicitud de información del asegurado, el programa realiza
+los cálculos respectivos, es decir:
+-Los recargos a la cotización.
+-Recargo por edad del asegurado.
+-Recargo por la edad del cónyuge (si lo tiene).
+-Recargo por la cantidad de hijos (si los tiene).
+
+Por último, muestra el nombre del asegurado, la cantidad extra por los
+recargos y el precio total de la cotización.
+
+

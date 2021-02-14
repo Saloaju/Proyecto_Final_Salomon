@@ -1,0 +1,106 @@
+Algoritmo Cotizacion
+	Definir nombre, casado, hijos como caracter
+	Definir edad, cantidad_hijos, edad_conyuge, hijos_recargo como numerica
+	Definir edad_18, edad_25, edad_50 como numerica
+	Definir casado_18, casado_25, casado_50 como numerica
+	Definir precio_base, precio_final como numerica
+	Definir  recargo, recargo_conyuge, recargo_hijos, recargo_total, recargo_total_conyuge, recargo_total_hijos como numerica
+	
+	//Precio inicial
+	precio_base<-2000
+	
+	//Recargos del asegurado
+	edad_18 <-0.1; 
+	edad_25 <-0.2;
+	edad_50 <-0.3;
+	
+	//Recargos del cónyuge
+	casado_18<-0.1
+	casado_25<-0.2
+	casado_50<-0.3
+	
+	//Recargo del asegurado si tiene hijos
+	hijos_recargo<-0.2
+	cantidad_hijos = 0
+	
+	//Recargos acumulativos
+	recargo<-0
+	recargo_conyuge<-0
+	recargo_hijos<-0
+	recargo_total<-0
+	recargo_total_conyuge<-0
+	recargo_total_hijos<-0
+	
+	//Cálculo precio final
+	precio_final<-0
+	
+	//Recargos por el asegurado
+	Escribir "Ingrese su nombre"
+	Leer nombre
+	Escribir "¿Cuántos años tiene?"
+	Leer edad
+	Si (edad>=18 && edad<=24) Entonces
+		recargo <- precio_base * edad_18
+		recargo_total = recargo_total + recargo
+	SiNo
+		Si (edad>=25 && edad<=49) Entonces
+			recargo <- precio_base * edad_25
+			recargo_total = recargo_total + recargo
+		SiNo
+			Si(edad>=50) Entonces
+				recargo <- precio_base * edad_50
+				recargo_total = recargo_total + recargo
+			Fin Si
+		Fin Si
+		Escribir "Edad incorrecta"
+	Fin Si
+	
+	//Información del cónyuge y si tiene hijos
+	Escribir "¿Está casado actualmente? SI/NO"
+	Leer casado
+	Si (casado=="SI" || casado=="si") Entonces
+		Escribir "¿Qué edad tiene su pareja?"
+		Leer edad_conyuge
+		Escribir "¿Tiene hijos?"
+		Leer hijos
+		Si (hijos=="SI" || hijos=="si") Entonces
+			Escribir "¿Cuántos hijos tiene?"
+			Leer cantidad_hijos
+		SiNo
+			Escribir "No tiene recargos por hijos"
+		Fin Si
+	SiNo
+		Escribir "No tiene recargos"
+	Fin Si
+	
+	//Recargo del cónyuge
+	Si (edad_conyuge>=18 && edad_conyuge<=24) Entonces
+		recargo_conyuge <- precio_base * casado_18
+		recargo_total_conyuge = recargo_total_conyuge + recargo_conyuge
+	SiNo
+		Si (edad_conyuge>=25 && edad_conyuge<=49) Entonces
+			recargo_conyuge <- precio_base * casado_25
+			recargo_total_conyuge = recargo_total_conyuge + recargo_conyuge
+		SiNo
+			Si(edad>=50) Entonces
+				recargo_conyuge <- precio_base * casado_50
+				recargo_total_conyuge = recargo_total_conyuge + recargo_conyuge
+			Fin Si
+		Fin Si
+	Fin Si
+	
+	//Recargo de los hijos
+	Si(cantidad_hijos>=1) Entonces
+		recargo_hijos = precio_base * hijos_recargo * cantidad_hijos
+		recargo_total_hijos = recargo_total_hijos + recargo_hijos
+	FinSi
+	
+	//Cálculo del precio final
+	precio_final = precio_base + recargo_total + recargo_total_conyuge + recargo_total_hijos
+	
+	//Resultados esperados
+	Escribir  "Para el asegurado " , nombre
+	Escribir "El recargo total será de: ", recargo_total + recargo_total_conyuge + recargo_total_hijos
+	Escribir  "El precio final será de: ", precio_final
+	
+FinAlgoritmo
